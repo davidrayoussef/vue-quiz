@@ -1,0 +1,36 @@
+{
+  "name": "css-quiz",
+  "version": "1.0.0",
+  "description": "A CSS quiz built with JavaScript.",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js --progress"
+  },
+  "repository": "davidrayoussef/css-quiz",
+  "homepage": "https://github.com/davidrayoussef/css-quiz",
+  "author": "David Ra Youssef (davidradeveloper@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.10.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
+  },
+  "keywords": [
+    "css",
+    "stylesheets",
+    "quiz",
+    "test"
+  ]
+}
