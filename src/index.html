@@ -1,0 +1,110 @@
+<html>
+<head>
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,100,700" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #EFEFEF;
+  width: 100vw;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #222;
+  overflow-y: scroll;
+  line-height: 1.5;
+}
+
+#app {
+  display: grid;
+}
+
+header {
+  width: 100vw;
+  height: 20vh;
+  text-align: center;
+}
+
+header h1 {
+  width: 100vw;
+}
+
+/*main {
+  height: 60vh;
+}*/
+
+section {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+h1, h2 {
+  font-weight: normal;
+  width: 50vw;
+  margin: 0;
+  padding: 5%;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+ol {
+  width: 50vw;
+  padding: 5%;
+  font-size: 1.5em;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 100vw;
+  height: 20vh;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <h1>CSS Quiz</h1>
+  </header>
+  <section v-for="(question, qIndex) in questions" v-show="qIndex === step">
+    <h2>{{ question.question }}</h2>
+    <ol>
+      <li v-for="(answer, aIndex) in question.answers">
+        <label>
+          <input
+            type="radio"
+            v-bind:value="question.correct === aIndex ? true : aIndex"
+            v-bind:name="qIndex"
+            v-model="userResponses[qIndex]">
+            {{ answer }}
+        </label>
+      </li>
+    </ol>
+  </section>
+  <section v-show="step === questions.length">
+    <h2>Quiz results</h2>
+    <p>
+      Total score: {{ getScore() }} of {{ questions.length }}
+    </p>
+  </section>
+  <footer>
+    <button v-on:click="next">NEXT</button>
+  </footer>
+</div>
+
+</body>
