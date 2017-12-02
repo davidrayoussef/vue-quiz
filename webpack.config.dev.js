@@ -36,8 +36,10 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js']
-	},
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
 	devServer: {
 		contentBase: './dist',
 		hot: true
