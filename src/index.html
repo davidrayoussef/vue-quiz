@@ -36,10 +36,6 @@ header h1 {
   width: 100vw;
 }
 
-/*main {
-  height: 60vh;
-}*/
-
 section {
   height: 60vh;
   display: flex;
@@ -59,13 +55,41 @@ h2 {
 }
 
 ol {
+  position: relative;
   width: 50vw;
   padding: 5%;
   font-size: 1.5em;
 }
 
 li {
-  margin-bottom: 20px;
+  position: relative;
+  padding: 10px;
+}
+
+input {
+  display: none;
+  padding: 5px;
+}
+
+label {
+  cursor: pointer;
+  text-indent: 50px;
+}
+
+label:after {
+  opacity: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(40, 248, 171, .5);
+}
+
+input:checked + label:after {
+  opacity: 1;
+  z-index: -1;
 }
 
 footer {
@@ -85,14 +109,13 @@ footer {
     <h2>{{ question.question }}</h2>
     <ol>
       <li v-for="(answer, aIndex) in question.answers">
-        <label>
           <input
             type="radio"
-            v-bind:value="question.correct === aIndex ? true : aIndex"
-            v-bind:name="qIndex"
+            :id="'' + qIndex + aIndex"
+            :value="question.correct === aIndex ? true : aIndex"
+            :name="qIndex"
             v-model="userResponses[qIndex]">
-            {{ answer }}
-        </label>
+        <label :for="'' + qIndex + aIndex">{{ answer }}</label>
       </li>
     </ol>
   </section>

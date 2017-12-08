@@ -9,7 +9,7 @@ new Vue({
   data: {
     questions: QUESTIONS,
     step: 0,
-    userResponses: Array(QUESTIONS.length).fill(false)
+    userResponses: Array(QUESTIONS.length)
   },
   methods: {
     next() {
