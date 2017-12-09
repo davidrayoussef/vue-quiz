@@ -13,11 +13,12 @@
 body {
   margin: 0;
   padding: 0;
-  background: #EFEFEF;
+  background: #1b2133;
   width: 100vw;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: #222;
+  font-weight: 100;
+  color: rgba(195, 205, 242, 1);
   overflow-y: scroll;
   line-height: 1.5;
 }
@@ -29,29 +30,38 @@ body {
 header {
   width: 100vw;
   height: 20vh;
+  min-height: 100px;
   text-align: center;
 }
 
 header h1 {
   width: 100vw;
+  font-size: 3.5em;
 }
 
 section {
   height: 60vh;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
 h1, h2 {
-  font-weight: normal;
+  font-weight: 100;
   width: 50vw;
   margin: 0;
   padding: 5%;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2.5em;
+  color: rgba(26, 188, 156, 1);
+  line-height: 1.2;
+}
+
+h2 p {
+  padding: 5%;
 }
 
 ol {
@@ -64,6 +74,7 @@ ol {
 li {
   position: relative;
   padding: 10px;
+  margin: 5px;
 }
 
 input {
@@ -73,7 +84,9 @@ input {
 
 label {
   cursor: pointer;
-  text-indent: 50px;
+  text-indent: 60px;
+  color: rgba(26, 188, 156, 1);
+  font-weight: normal;
 }
 
 label:after {
@@ -84,12 +97,27 @@ label:after {
   position: absolute;
   left: 0;
   top: 0;
-  background: rgba(40, 248, 171, .5);
+  background: rgba(195, 205, 242, .15);
+  transition: .15s;
 }
 
 input:checked + label:after {
   opacity: 1;
   z-index: -1;
+}
+
+.results li p {
+  margin: 0;
+  font-weight: normal;
+}
+
+button {
+  background: none;
+  color: rgba(195, 205, 242, 1);
+  border: .5px solid rgba(26, 188, 156, 1);
+  font-size: 1em;
+  padding: 20px 30px;
+  cursor: pointer;
 }
 
 footer {
@@ -106,16 +134,27 @@ footer {
     <h1>CSS Quiz</h1>
   </header>
   <section v-for="(question, qIndex) in questions" v-show="qIndex === step">
-    <h2>{{ question.question }}</h2>
+    <h2><p>{{ question.question }}</p></h2>
     <ol>
       <li v-for="(answer, aIndex) in question.answers">
           <input
             type="radio"
             :id="'' + qIndex + aIndex"
+            :class="{ active: question.correct === aIndex }"
             :value="question.correct === aIndex ? true : aIndex"
             :name="qIndex"
             v-model="userResponses[qIndex]">
         <label :for="'' + qIndex + aIndex">{{ answer }}</label>
+      </li>
+    </ol>
+  </section>
+  <section class="results" v-for="(result, rIndex) in questions" v-show="rIndex + .5 === step">
+    <h2><p>{{ result.question }}</p></h2>
+    <ol>
+      <li
+        v-for="(answer, aIndex) in result.answers"
+        v-show="result.answers[result.correct] === 'All of the above.' ? result.correct !== aIndex : result.correct === aIndex">
+        <p>{{ answer }}</p>
       </li>
     </ol>
   </section>
@@ -126,7 +165,7 @@ footer {
     </p>
   </section>
   <footer>
-    <button v-on:click="next">NEXT</button>
+    <button v-on:click="next">{{ ~~step === step ? 'SUBMIT' : 'NEXT' }}</button>
   </footer>
 </div>
 

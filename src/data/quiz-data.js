@@ -13,14 +13,14 @@ const QUESTIONS = [
     "question": "Which of the following is used to make a website responsive?",
     "answers": [
       "Media queries.",
-      "Flexible units like percent, vw, vh, em, rem",
-      "CSS features like grid and flexbox",
+      "Flexible units like percent, vw, vh, em, rem.",
+      "CSS features like grid and flexbox.",
       "All of the above."
     ],
     "correct": 3
   },
   {
-    "question": "How does the css engine read a (CSS statement?)?",
+    "question": "How does the browser read CSS selectors?",
     "answers": [
       "Left to right.",
       "Right to left.",
@@ -50,7 +50,7 @@ const QUESTIONS = [
     "correct": 1
   },
   {
-    "question": "What's the order of values of single-declarations for the margin and padding properties, e.g. margin: 20px 10px 30px 40px.",
+    "question": "What's the value order of single-declarations for the margin and padding properties, e.g. margin: 20px 10px 30px 40px.",
     "answers": [
       "Left Right Top Bottom",
       "Top Left Right Bottom",
@@ -92,8 +92,8 @@ const QUESTIONS = [
   {
     "question": "Which of the following is true about the box-sizing property?",
     "answers": [
-      "box-sizing: border-box includes border thickness and padding in the overall dimensions of the box; prevents border and padding from affecting the size.",
-      "box-sizing: border-box automatically adjusts the content area based on the remainding width, after subtracting border and padding.",
+      "box-sizing: border-box includes border thickness and padding in the overall dimensions of the box; it prevents border and padding from affecting the size.",
+      "box-sizing: border-box automatically adjusts the content area based on the remaining width, after subtracting border and padding.",
       "The default is box-sizing: content-box, which ?????",
       "All of the above. // Test this out in the browser"
     ],
@@ -103,8 +103,8 @@ const QUESTIONS = [
     "question": "Which is true about the difference between position: relative and position: absolute?",
     "answers": [
       "position: relative positions an element relative to its default static position (relative to where it normally would have been).",
-      "An element set to absolute will be ignored by other elements on the page?",
-      "position: absolute positions an element relative to the last positioned parent element, or body if there are none.",
+      "An element set to absolute will be ignored by other elements on the page (removed from the page flow).",
+      "position: absolute positions an element relative to the last positioned parent element (or body if there are none).",
       "All of the above."
     ],
     "correct": 3

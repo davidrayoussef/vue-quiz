@@ -2,18 +2,20 @@ import Vue from 'vue';
 import QUESTIONS from './data/quiz-data';
 const { shuffle } = require('funcifyr');
 
-shuffle(QUESTIONS);
+const TEN_QUESTIONS = shuffle(QUESTIONS).slice(0, 10);
 
 new Vue({
   el: '#app',
   data: {
-    questions: QUESTIONS,
+    questions: TEN_QUESTIONS,
     step: 0,
-    userResponses: Array(QUESTIONS.length)
+    userResponses: Array(TEN_QUESTIONS.length)
   },
   methods: {
     next() {
-      this.step++;
+      const { userResponses, step } = this.$data;
+      console.log(userResponses[~~step]);
+      this.step += .5;
     },
     getScore() {
       return this.userResponses.filter(v => v === true).length;
