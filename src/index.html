@@ -37,6 +37,7 @@ header {
 header h1 {
   width: 100vw;
   font-size: 3.5em;
+  font-weight: 100;
 }
 
 section {
@@ -48,7 +49,6 @@ section {
 }
 
 h1, h2 {
-  font-weight: 100;
   width: 50vw;
   margin: 0;
   padding: 5%;
@@ -56,7 +56,8 @@ h1, h2 {
 
 h2 {
   font-size: 2.5em;
-  color: rgba(26, 188, 156, 1);
+  font-weight: 400;
+  color: rgba(66, 213, 185, 1);
   line-height: 1.2;
 }
 
@@ -84,8 +85,7 @@ input {
 
 label {
   cursor: pointer;
-  text-indent: 60px;
-  color: rgba(26, 188, 156, 1);
+  color: rgba(66, 213, 185, 1);
   font-weight: normal;
 }
 
@@ -114,7 +114,7 @@ input:checked + label:after {
 button {
   background: none;
   color: rgba(195, 205, 242, 1);
-  border: .5px solid rgba(26, 188, 156, 1);
+  border: .5px solid rgba(66, 213, 185, 1);
   font-size: 1em;
   padding: 20px 30px;
   cursor: pointer;
@@ -125,6 +125,39 @@ footer {
   height: 20vh;
   text-align: center;
 }
+
+.correct {
+  animation: bounce .25s infinite;
+}
+
+.incorrect {
+  animation: shake 0.5s cubic-bezier(.35,.05,.20,.99) both;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(1px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-2px);
+  }
+  45%, 55% {
+    transform: translateX(2px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -133,18 +166,17 @@ footer {
   <header>
     <h1>CSS Quiz</h1>
   </header>
-  <section v-for="(question, qIndex) in questions" v-show="qIndex === step">
+  <section :id="'s' + qIndex" v-for="(question, qIndex) in questions" v-show="qIndex === step">
     <h2><p>{{ question.question }}</p></h2>
     <ol>
-      <li v-for="(answer, aIndex) in question.answers">
+      <li v-for="(answer, aIndex) in question.answers" :class="{ markCorrect: question.correct === aIndex && qIndex === step }">
           <input
             type="radio"
-            :id="'' + qIndex + aIndex"
-            :class="{ active: question.correct === aIndex }"
+            :id="'i' + qIndex + aIndex"
             :value="question.correct === aIndex ? true : aIndex"
             :name="qIndex"
             v-model="userResponses[qIndex]">
-        <label :for="'' + qIndex + aIndex">{{ answer }}</label>
+        <label :for="'i' + qIndex + aIndex">{{ answer }}</label>
       </li>
     </ol>
   </section>
@@ -165,7 +197,8 @@ footer {
     </p>
   </section>
   <footer>
-    <button v-on:click="next">{{ ~~step === step ? 'SUBMIT' : 'NEXT' }}</button>
+    <button v-show="~~step === step && step < questions.length" v-on:click="submit">SUBMIT</button>
+    <button v-show="~~step !== step" v-on:click="next">NEXT</button>
   </footer>
 </div>
 
