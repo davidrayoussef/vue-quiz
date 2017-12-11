@@ -12,11 +12,25 @@ new Vue({
     userResponses: Array(TEN_QUESTIONS.length)
   },
   methods: {
-    next() {
+    submit() {
       const { userResponses, step } = this.$data;
-      console.log(userResponses[~~step]);
+
+      if ( userResponses[~~step] === true ) {
+        document.querySelector('.markCorrect').classList.add('correct');
+      }
+      else {
+        document.getElementById('s' + ~~step).querySelector('input:checked').parentNode.classList.add('incorrect');
+      }
+
+      setTimeout(() => {
+        this.step += .5;
+      }, 950);
+    },
+
+    next() {
       this.step += .5;
     },
+
     getScore() {
       return this.userResponses.filter(v => v === true).length;
     }
