@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import QUESTIONS from './data/quiz-data';
+import './style.css';
 const { shuffle } = require('funcifyr');
 
 const TEN_QUESTIONS = shuffle(QUESTIONS).slice(0, 10);
