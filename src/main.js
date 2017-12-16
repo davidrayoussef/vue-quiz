@@ -16,7 +16,7 @@ new Vue({
       const { userResponses, step } = this.$data;
 
       if ( userResponses[~~step] === true ) {
-        document.querySelector('.markCorrect').classList.add('correct');
+        document.querySelector('.mark-correct').classList.add('correct');
       }
       else {
         document.getElementById('s' + ~~step).querySelector('input:checked').parentNode.classList.add('incorrect');

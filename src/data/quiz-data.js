@@ -30,7 +30,7 @@ const QUESTIONS = [
     "correct": 1
   },
   {
-    "question": "What is the order of specificity from greatest to least?",
+    "question": "What is the order of specificity from highest to least?",
     "answers": [
       "#id > !important > .class > tag",
       "#id > .class > tag > !important",

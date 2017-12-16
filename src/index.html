@@ -13,7 +13,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #1b2133;
+  background: rgba(27, 33, 51, 1);
   width: 100vw;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -38,6 +38,18 @@ header h1 {
   width: 100vw;
   font-size: 3.5em;
   font-weight: 100;
+  padding-top: 2.5%;
+  padding-bottom: 0;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 100;
+}
+
+header span, .total-results span {
+  font-weight: 400;
 }
 
 section {
@@ -55,7 +67,7 @@ h1, h2 {
 }
 
 h2 {
-  font-size: 2.5em;
+  font-size: 2.25em;
   font-weight: 400;
   color: rgba(66, 213, 185, 1);
   line-height: 1.2;
@@ -67,8 +79,8 @@ h2 p {
 
 ol {
   position: relative;
-  width: 50vw;
-  padding: 5%;
+  width: 40vw;
+  margin-right: 5%;
   font-size: 1.5em;
 }
 
@@ -101,9 +113,22 @@ label:after {
   transition: .15s;
 }
 
+label:hover:after {
+  opacity: 1;
+  background: rgba(195, 205, 242, .15);
+}
+
 input:checked + label:after {
   opacity: 1;
   z-index: -1;
+}
+
+.results li {
+  visibility: hidden;
+}
+
+.results .visible {
+  visibility: visible;
 }
 
 .results li p {
@@ -112,18 +137,56 @@ input:checked + label:after {
 }
 
 button {
-  background: none;
-  color: rgba(195, 205, 242, 1);
-  border: .5px solid rgba(66, 213, 185, 1);
+  width: 120px;
+  color: rgb(249, 251, 252);
+  border: none;
   font-size: 1em;
   padding: 20px 30px;
   cursor: pointer;
+  transition: .2s;
+  outline: none;
+}
+
+button:focus {
+  background: rgba(255, 255, 255, .05);
+}
+
+.submit {
+  background: none;
+  border: .5px solid rgb(47, 145, 127);
+}
+
+.submit:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .1);
+  border-color: transparent;
+}
+
+.next {
+  background: none;
+  border: .5px solid rgba(77, 138, 250, 1);
 }
 
 footer {
   width: 100vw;
   height: 20vh;
   text-align: center;
+}
+
+.total-results {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.total-results h2 {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.total-results p {
+  font-size: 2em;
 }
 
 .correct {
@@ -165,11 +228,12 @@ footer {
 <div id="app">
   <header>
     <h1>CSS Quiz</h1>
+    <p v-show="step < questions.length">Question <span>{{ ~~step + 1 }}</span> of <span>{{ questions.length }}</span></p>
   </header>
-  <section :id="'s' + qIndex" v-for="(question, qIndex) in questions" v-show="qIndex === step">
+  <section :id="'s' + qIndex" v-for="(question, qIndex) in questions" v-if="qIndex === step">
     <h2><p>{{ question.question }}</p></h2>
     <ol>
-      <li v-for="(answer, aIndex) in question.answers" :class="{ markCorrect: question.correct === aIndex && qIndex === step }">
+      <li v-for="(answer, aIndex) in question.answers" :class="{ 'mark-correct': question.correct === aIndex && qIndex === step }">
           <input
             type="radio"
             :id="'i' + qIndex + aIndex"
@@ -180,25 +244,36 @@ footer {
       </li>
     </ol>
   </section>
-  <section class="results" v-for="(result, rIndex) in questions" v-show="rIndex + .5 === step">
+  <section class="results" v-for="(result, rIndex) in questions" v-if="rIndex + .5 === step">
     <h2><p>{{ result.question }}</p></h2>
     <ol>
       <li
         v-for="(answer, aIndex) in result.answers"
-        v-show="result.answers[result.correct] === 'All of the above.' ? result.correct !== aIndex : result.correct === aIndex">
+        :class="{ visible: result.answers[result.correct] === 'All of the above.' ? true : result.correct === aIndex }">
         <p>{{ answer }}</p>
       </li>
     </ol>
   </section>
-  <section v-show="step === questions.length">
+  <section v-if="step === questions.length" class="total-results">
     <h2>Quiz results</h2>
     <p>
-      Total score: {{ getScore() }} of {{ questions.length }}
+      Total score: <span>{{ getScore() }}</span> of <span>{{ questions.length }}</span>
     </p>
   </section>
   <footer>
-    <button v-show="~~step === step && step < questions.length" v-on:click="submit">SUBMIT</button>
-    <button v-show="~~step !== step" v-on:click="next">NEXT</button>
+    <button
+      class="submit"
+      :disabled="userResponses[step] === undefined"
+      v-if="~~step === step && step < questions.length"
+      v-on:click="submit">
+      SUBMIT
+    </button>
+    <button
+      class="next"
+      v-if="~~step !== step"
+      v-on:click="next">
+      NEXT
+    </button>
   </footer>
 </div>
 
