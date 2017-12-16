@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background: rgba(27, 33, 51, 1);
-  width: 100vw;
+  width: 98vw;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 100;
@@ -17,17 +17,19 @@ body {
 
 #app {
   display: grid;
+  grid-template-rows: 15vh 70vh 15vh;
+  align-items: center;
 }
 
 header {
-  width: 100vw;
   height: 20vh;
   min-height: 100px;
   text-align: center;
+  align-self: start;
 }
 
 header h1 {
-  width: 100vw;
+  width: 100%;
   font-size: 3.5em;
   font-weight: 100;
   padding-top: 2.5%;
@@ -55,7 +57,6 @@ section {
 h1, h2 {
   width: 50vw;
   margin: 0;
-  padding: 5%;
 }
 
 h2 {
@@ -63,10 +64,12 @@ h2 {
   font-weight: 400;
   color: rgba(66, 213, 185, 1);
   line-height: 1.2;
+  padding: 0 5%;
 }
 
 h2 p {
   padding: 5%;
+  margin-bottom: 15px;
 }
 
 ol {
@@ -162,7 +165,6 @@ button:focus {
 }
 
 footer {
-  width: 100vw;
   height: 20vh;
   text-align: center;
 }
@@ -210,5 +212,28 @@ footer {
   }
   45%, 55% {
     transform: translateX(2px);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    font-size: 14px;
+  }
+
+  h2, ol {
+    width: 80vw;
+  }
+
+  h2, h2 p {
+    padding: 0;
+  }
+
+  ol {
+    margin-top: 0;
+  }
+
+  section {
+    flex-direction: column;
+    justify-content: normal;
   }
 }
