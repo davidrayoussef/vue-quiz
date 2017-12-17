@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	entry: './src/main.js',
@@ -25,6 +26,11 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
 		new ExtractTextPlugin('style.css'),
 		new HtmlWebpackPlugin({
 			inject: true,
@@ -42,18 +48,6 @@ module.exports = {
 				minifyURLs: true
 			}
 		}),
-		new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				screw_ie8: true
-			},
-			mangle: {
-				screw_ie8: true
-			},
-			output: {
-				comments: false,
-				screw_ie8: true
-			}
-		})
+		new UglifyJsPlugin()
 	]
 };

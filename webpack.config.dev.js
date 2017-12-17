@@ -13,6 +13,10 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+        test: /\.vue$/,
+        loader: 'vue-loader'
+			},
       {
         test: /\.js$/,
         enforce: 'pre',
@@ -35,10 +39,11 @@ module.exports = {
       }
 		]
 	},
-	resolve: {
+  resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
-    }
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
 	devServer: {
 		contentBase: './dist',
