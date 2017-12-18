@@ -30,6 +30,7 @@ header {
 
 header h1 {
   width: 100%;
+  color: rgba(66, 213, 185, 1);
   font-size: 3.5em;
   font-weight: 100;
   padding-top: 2.5%;
@@ -70,6 +71,15 @@ h2 {
 h2 p {
   padding: 5%;
   margin-bottom: 15px;
+}
+
+code {
+  font-family: monospace;
+  font-size: .8em;
+  background: rgba(255, 255, 255, .15);
+  padding: 3px 5px;
+  margin: 0 2px;
+  color: #DDD;
 }
 
 ol {
@@ -116,6 +126,10 @@ label:hover:after {
 input:checked + label:after {
   opacity: 1;
   z-index: -1;
+}
+
+.question {
+  color: rgba(195, 205, 242, 1);
 }
 
 .results li {
