@@ -94,8 +94,8 @@ const QUESTIONS = [
     "answers": [
       "<code>box-sizing: border-box</code> includes border thickness and padding in the overall dimensions of the box; it prevents border and padding from affecting the size.",
       "<code>box-sizing: border-box</code> automatically adjusts the content area based on the remaining width, after subtracting border and padding.",
-      "The default is <code>box-sizing: content-box</code>, which ?????",
-      "All of the above. // Test this out in the browser"
+      "The default is <code>box-sizing: content-box</code>, which doesn't include border and padding in the element's total width and height.",
+      "All of the above."
     ],
     "correct": 3
   },
