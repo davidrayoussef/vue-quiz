@@ -50,7 +50,7 @@ const QUESTIONS = [
     "correct": 1
   },
   {
-    "question": "What's the value order of single-declarations for the margin and padding properties, e.g. <code>margin: 20px 10px 30px 40px</code>.",
+    "question": "What's the value order of single-declarations for the <code>margin</code> and <code>padding</code> properties, e.g. <code>margin: 20px 10px 30px 40px</code>.",
     "answers": [
       "Left Right Top Bottom",
       "Top Left Right Bottom",
@@ -72,9 +72,9 @@ const QUESTIONS = [
   {
     "question": "Which of the following is TRUE about the Box Model?",
     "answers": [
-      "Padding specifies the space between the content area and the border.",
-      "Border specifies the area between the padding on the inside and margin on the outside.",
-      "Margin specifies the space outside the border.",
+      "<code>padding</code> specifies the space between the content area and the border.",
+      "<code>border</code> specifies the area between the padding on the inside and margin on the outside.",
+      "<code>margin</code> specifies the space outside the border.",
       "All of the above."
     ],
     "correct": 3
@@ -103,7 +103,7 @@ const QUESTIONS = [
     "question": "Which is true about the difference between <code>position: relative</code> and <code>position: absolute</code>?",
     "answers": [
       "<code>position: relative</code> positions an element relative to its default static position (relative to where it normally would have been).",
-      "An element set to <code>absolute</code> will be ignored by other elements on the page (removed from the page flow).",
+      "An element set to <code>position: absolute</code> will be ignored by other elements on the page (removed from the page flow).",
       "<code>position: absolute</code> positions an element relative to the last positioned parent element (or body if there are none).",
       "All of the above."
     ],
@@ -113,38 +113,12 @@ const QUESTIONS = [
     "question": "What's the difference between an <code>id</code> and a <code>class</code>?",
     "answers": [
       "An <code>id</code> is unique and is used on one element; a <code>class</code> can be used on many elements.",
-      "ids have higher specificity than classes.",
+      "<code>id</code>s have higher specificity than <code>class</code>es.",
       "More than one <code>class</code> can be used for an element.",
       "All of the above."
     ],
     "correct": 3
   }
 ];
-
-//
-// What's the difference between display: none and visibility: hidden?
-// An element with display: none will be completely removed from the web page.
-// An element with visibility: hidden will not be visible on the web page, but the space occupied by it will.
-// They both remove an element from the DOM.
-//
-//
-// Which properties are used to affect the positioning of elements in the browser?
-// position display z-index float and clear
-// something something transition something
-// something something visibility
-// Only JavaScript allows you to affect positioning.
-//
-// What are the four position properties for block? elements?
-// static relative absolute and fixed
-//
-// What's an instance where you would use the calc() function
-//
-// Which of the following is an example of the BEM pattern?
-//
-// performance in animations ... transform vs ?
-//
-// How do you center a div within a div in JavaScript?
-// margin: 0 auto; in the containing elements
-// display: flex; align-items center; on the parent element
 
 export default QUESTIONS;
