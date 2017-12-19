@@ -1,14 +1,14 @@
 # CSS Quiz
-A CSS quiz written in JavaScript.
+A CSS quiz built with Vue.
 
-[View Demo](http://davidra.co/css-quiz/)
+[View Demo](http://davidra.co/vue-quiz/)
 
 Getting Started
 ---------------
 
 ```shell
-$ git clone https://github.com/davidrayoussef/css-quiz.git
-$ cd css-quiz
+$ git clone https://github.com/davidrayoussef/vue-quiz.git
+$ cd vue-quiz
 $ npm install
 $ npm start
 ```
