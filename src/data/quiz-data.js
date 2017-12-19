@@ -92,8 +92,8 @@ const QUESTIONS = [
   {
     "question": "Which of the following is true about the <code>box-sizing</code> property?",
     "answers": [
-      "<code>box-sizing: border-box</code> includes border thickness and padding in the overall dimensions of the box; it prevents border and padding from affecting the size.",
-      "<code>box-sizing: border-box</code> automatically adjusts the content area based on the remaining width, after subtracting border and padding.",
+      "<code>box-sizing: border-box</code> includes border and padding in the overall dimensions of the box and prevents them from affecting its size.",
+      "<code>box-sizing: border-box</code> automatically adjusts the content area based on the remaining size, after subtracting border and padding.",
       "The default is <code>box-sizing: content-box</code>, which doesn't include border and padding in the element's total width and height.",
       "All of the above."
     ],
@@ -113,7 +113,7 @@ const QUESTIONS = [
     "question": "What's the difference between an <code>id</code> and a <code>class</code>?",
     "answers": [
       "An <code>id</code> is unique and is used on one element; a <code>class</code> can be used on many elements.",
-      "<code>id</code>s have higher specificity than <code>class</code>es.",
+      "An <code>id</code> has higher specificity than a <code>class</code>.",
       "More than one <code>class</code> can be used for an element.",
       "All of the above."
     ],

@@ -11,7 +11,6 @@ body {
   font-size: 16px;
   font-weight: 100;
   color: rgba(195, 205, 242, 1);
-  overflow-y: scroll;
   line-height: 1.5;
 }
 
@@ -77,7 +76,7 @@ code {
   font-family: monospace;
   font-size: .8em;
   background: rgba(255, 255, 255, .15);
-  padding: 3px 5px;
+  padding: .5% 1%;
   margin: 0 2px;
   color: #DDD;
 }
@@ -234,6 +233,10 @@ footer {
     font-size: 14px;
   }
 
+  h2 {
+    font-size: 1.75em;
+  }
+
   h2, ol {
     width: 80vw;
   }
@@ -250,4 +253,54 @@ footer {
     flex-direction: column;
     justify-content: normal;
   }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    font-size: 12px;
+  }
+
+  h2 p {
+    margin-top: 0;
+  }
+
+  ol {
+    padding-left: 5%;
+  }
+
+  li {
+    padding: 5px 10px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  body {
+    font-size: 10px;
+  }
+
+  h2, ol {
+    width: 85vw;
+  }
+
+  li {
+    margin: 0 5px;
+  }
+
+  footer {
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+    body {
+      font-size: 10px;
+    }
+
+    #app {
+      display: block;
+    }
+
+    section {
+      margin-top: 20px;
+    }
 }
