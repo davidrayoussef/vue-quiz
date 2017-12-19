@@ -77,6 +77,8 @@ export default {
     submit() {
       const { userResponses, step } = this.$data;
 
+      event.target.disabled = true;
+
       if ( userResponses[~~step] === true ) {
         document.querySelector('.mark-correct').classList.add('correct');
       }
