@@ -74,7 +74,7 @@ export default {
     }
   },
   methods: {
-    submit() {
+    submit(event) {
       const { userResponses, step } = this.$data;
 
       event.target.disabled = true;
