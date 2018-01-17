@@ -1,4 +1,4 @@
-const QUESTIONS = [
+const QUESTIONS_DATA = [
   {
     "question":"What's the difference between <code>grid</code> and <code>flexbox</code>?",
     "answers": [
@@ -121,4 +121,4 @@ const QUESTIONS = [
   }
 ];
 
-export default QUESTIONS;
+export default QUESTIONS_DATA;
