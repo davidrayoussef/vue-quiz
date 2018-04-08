@@ -69,7 +69,6 @@ h2 {
 
 h2 p {
   padding: 5%;
-  margin-bottom: 15px;
 }
 
 code {
@@ -101,7 +100,6 @@ input {
 
 label {
   cursor: pointer;
-  color: rgba(66, 213, 185, 1);
   font-weight: normal;
 }
 
@@ -127,16 +125,13 @@ input:checked + label:after {
   z-index: -1;
 }
 
-.question {
-  color: rgba(195, 205, 242, 1);
-}
-
 .results li {
-  visibility: hidden;
+  opacity: .5;
 }
 
-.results .visible {
-  visibility: visible;
+.results .correct-result {
+  color: rgba(66, 213, 185, 1);
+  opacity: 1;
 }
 
 .results li p {

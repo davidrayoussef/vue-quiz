@@ -5,7 +5,7 @@
       :id="'s' + qIndex"
       v-for="(question, qIndex) in questions">
       <h2>
-        <p class="question" v-html="question.question"></p>
+        <p v-html="question.question"></p>
       </h2>
       <ol>
         <li v-for="(answer, aIndex) in question.answers" :class="{ 'mark-correct': question.correct === aIndex && qIndex === step }">
@@ -23,11 +23,13 @@
       v-if="rIndex + .5 === step"
       class="results"
       v-for="(result, rIndex) in questions">
-      <h2><p class="question" v-html="result.question"></p></h2>
+      <h2>
+        <p class="results-question" v-html="result.question"></p>
+      </h2>
       <ol>
         <li
           v-for="(answer, aIndex) in result.answers"
-          :class="{ visible: result.answers[result.correct] === 'All of the above.' ? true : result.correct === aIndex }">
+          :class="{ 'correct-result': result.correct === aIndex }">
           <p v-html="answer"></p>
         </li>
       </ol>
