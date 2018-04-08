@@ -4,7 +4,7 @@
   "description": "A CSS quiz built with Vue.",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js --open",
     "build": "webpack --config webpack.config.prod.js --progress"
   },
   "repository": "davidrayoussef/vue-quiz",
