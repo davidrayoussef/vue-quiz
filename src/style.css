@@ -151,7 +151,7 @@ button {
 }
 
 button:focus {
-  background: rgba(255, 255, 255, .05);
+  background: rgba(255, 255, 255, .1);
 }
 
 .submit {

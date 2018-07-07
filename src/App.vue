@@ -2,20 +2,24 @@
   <div id="app">
     <app-header
       :questions="questions"
-      :step="step">
+      :step="step"
+    >
     </app-header>
     <questions
       :questions="questions"
       :step="step"
       :userResponses="userResponses"
-      :getScore="getScore">
+      :getScore="getScore"
+      :enter="handleEnterPress"
+    >
     </questions>
     <app-footer
-     :questions="questions"
-     :step="step"
-     :userResponses="userResponses"
-     :submit="submit"
-     :next="next">
+      :questions="questions"
+      :step="step"
+      :userResponses="userResponses"
+      :submit="handleSubmit"
+      :next="next"
+    >
     </app-footer>
   </div>
 </template>
@@ -44,10 +48,10 @@ export default {
     'app-footer': FooterComponent
   },
   methods: {
-    submit(event) {
+    handleSubmit(e) {
       const { userResponses, step } = this.$data;
 
-      event.target.disabled = true;
+      e.target.disabled = true;
 
       if ( userResponses[~~step] === true ) {
         document.querySelector('.mark-correct').classList.add('correct');
@@ -59,6 +63,10 @@ export default {
       setTimeout(() => {
         this.step += .5;
       }, 950);
+    },
+
+    handleEnterPress(e) {
+      e.target.querySelector('input').click();
     },
 
     next() {

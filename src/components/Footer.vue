@@ -4,13 +4,15 @@
       class="submit"
       :disabled="userResponses[step] === undefined"
       v-if="~~step === step && step < questions.length"
-      @click="submit">
+      @click="submit"
+    >
       SUBMIT
     </button>
     <button
       class="next"
       v-if="~~step !== step"
-      @click="next">
+      @click="next"
+    >
       NEXT
     </button>
   </footer>
