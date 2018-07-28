@@ -118,6 +118,16 @@ const QUESTIONS_DATA = [
       "All of the above."
     ],
     "correct": 3
+  },
+  {
+    "question": "If an element is NOT affected by the <code>top</code>, <code>left</code>, <code>right</code>, or <code>bottom</code> values, what is the <code>position</code> property set to?",
+    "answers": [
+      "<code>position: absolute</code>",
+      "<code>position: static</code>",
+      "<code>position: fixed</code>",
+      "<code>position: relative</code>"
+    ],
+    "correct": 1
   }
 ];
 
