@@ -128,6 +128,16 @@ const QUESTIONS_DATA = [
       "<code>position: relative</code>"
     ],
     "correct": 1
+  },
+  {
+    "question": "How do you center something vertically?",
+    "answers": [
+      "<code>position: absolute;</code><code>top: 50%;</code><code>transform: translateY(-50%);</code>",
+      "<code>display: flexbox;</code><code>align-items: center;</code>",
+      "<code>display: grid;</code><code>align-items: center;</code>",
+      "All of the above."
+    ],
+    "correct": 3
   }
 ];
 
